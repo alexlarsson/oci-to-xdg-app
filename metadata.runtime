@@ -1,0 +1,6 @@
+[Runtime]
+name=org.hello.Platform
+runtime=org.hello.Platform/x86_64/master
+
+[Environment]
+LD_LIBRARY_PATH=/app/lib64
