@@ -19,6 +19,64 @@
         "path": "rootfs",
         "readonly": true
     },
+    "mounts": [
+	{
+	    "destination": "/proc",
+	    "type": "proc",
+	    "source": "proc"
+	},
+	{
+	    "destination": "/sys",
+	    "type": "sysfs",
+	    "source": "sysfs",
+	    "options": [
+		"nosuid",
+		"noexec",
+		"nodev"
+	    ]
+	},
+	{
+	    "destination": "/sys/fs/cgroup",
+	    "type": "cgroup",
+	    "source": "cgroup",
+	    "options": [
+		"nosuid",
+		"noexec",
+		"nodev",
+		"relatime",
+		"ro"
+	    ]
+	}
+    ],
+    "linux": {
+	"rlimits": [
+	    {
+		"type": "RLIMIT_NOFILE",
+		"hard": 1024,
+		"soft": 1024
+	    }
+	],
+	"resources": {
+	    "devices": [
+		{
+		    "allow": false,
+		    "access": "rwm"
+		}
+	    ]
+	},
+	"namespaces": [
+	    { "type": "pid" },
+	    { "type": "network" },
+	    { "type": "ipc" },
+	    { "type": "uts" },
+	    { "type": "mount" }
+	],
+	"devices": null,
+	"seccomp": {
+	    "defaultAction": "",
+	    "architectures": null
+	}
+    },
     "annotations": {
         "key1": "value1",
         "key2": "value2"
